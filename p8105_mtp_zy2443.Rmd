@@ -106,4 +106,13 @@ knitr::kable(df, digits = 2)
 
 There are `r ndate` unique dates in the dataset. There are 119 records for Gagne, 201 records for Raisin, 192 records for Simone. The average weight of Gagne is 9.77 lbs, the average weight of of Raisin is 17.8 lbs, the average weight os Simone is 9.95 lbs, so the average weight of Gagne is quite similar to the average weight of Simone, the average weight of Raisin is almost 2 times of the weight of Gagne. The standard deviation of the weight for Gagne is 0.730, the standard deviation of the weight fot Raisin is 0.763, the standard deviation of the weight for Simone is 0.477. Simone has the smallest standard deviation, so Simone has the smallest varitions in weight.
 
+## Visualization
+```{r}
+p1 <- dat1 %>% ggplot(aes(y=Weight, x=Pet)) + geom_boxplot() +
+  labs(y="Weight(Lbs)", title="Distribution of weight")
+p2 <- dat1 %>% ggplot(aes(x=DATE, y=Weight, colour=Pet)) + geom_line(size=2) +
+  labs(y="Weight(Lbs)", title="Weight over time")
+p1 + p2
+```
 
+Gagae and Simone have similar weight, Raisin has the highest weight. The weight of Gagne decreased in 2019-07, the weight of Raisin has a decline before 2019-01.
