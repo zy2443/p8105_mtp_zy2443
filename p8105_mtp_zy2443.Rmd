@@ -95,7 +95,15 @@ dat2 <- na.omit(dat2)
 write.csv(dat2, "dat2.csv", row.names = F)
 ```
 
+## EDA
+```{r}
+ndate <- length(unique(dat$DATE))
+df <- dat1 %>%
+  group_by(Pet) %>% 
+  summarise(Obs=n(), averageWeight=mean(Weight), sdWeight=sd(Weight)) 
+knitr::kable(df, digits = 2)
+```
 
-
+There are `r ndate` unique dates in the dataset. There are 119 records for Gagne, 201 records for Raisin, 192 records for Simone. The average weight of Gagne is 9.77 lbs, the average weight of of Raisin is 17.8 lbs, the average weight os Simone is 9.95 lbs, so the average weight of Gagne is quite similar to the average weight of Simone, the average weight of Raisin is almost 2 times of the weight of Gagne. The standard deviation of the weight for Gagne is 0.730, the standard deviation of the weight fot Raisin is 0.763, the standard deviation of the weight for Simone is 0.477. Simone has the smallest standard deviation, so Simone has the smallest varitions in weight.
 
 
